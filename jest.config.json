@@ -1,8 +1,42 @@
 {
-  "transform": {
-    "^.+\\.(t|j)sx?$": "ts-jest"
+  "cacheDirectory": "<rootDir>/tests/.cache",
+  "clearMocks": true,
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "**/*.{js,jsx}",
+    "!**/node_modules/**",
+    "!**/tests/**",
+    "!**/coverage/**",
+    "!**/.next/**",
+    "!**/jest_dx/**"
+  ],
+  "coverageDirectory": "<rootDir>/tests/coverage",
+  "coverageReporters": ["json", "text", "lcov", "clover"],
+  "coverageThreshold": {
+    "global": {
+      "statements": 80,
+      "branches": 15,
+      "functions": 100,
+      "lines": 80
+    }
   },
-  "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
-  "testEnvironment": "jsdom"
+
+  "errorOnDeprecated": true,
+
+  "moduleDirectories": ["node_modules", "__dirname"],
+
+  "notify": true,
+  "notifyMode": "always",
+
+  "resetMocks": true,
+  "restoreMocks": true,
+  "roots": ["<rootDir>/src/"],
+
+  "testEnvironment": "jest-environment-jsdom",
+  "testLocationInResults": true,
+  "testMatch": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[tj]s?(x)"],
+  "testPathIgnorePatterns": ["/.next/", "/dist/", "/build/", "/node_modules/", "<rootDir>/tests/", "/coverage/"],
+  "transform": { "^.+\\.tsx?$": "ts-jest" },
+
+  "verbose": true
 }
