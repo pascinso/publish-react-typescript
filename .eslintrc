@@ -1,39 +1,58 @@
 {
-  "root": true,
+  "env": {
+    "browser": true,
+    "es2020": true,
+    "node": true,
+    "commonjs": true
+  },
   "extends": [
-    "prettier",
-    "plugin:prettier/recommended",
+    "airbnb",
+    "airbnb/hooks",
     "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
     "plugin:jest/recommended",
-    "plugin:jest/style"
+    "plugin:jest/style",
+    "plugin:jsx-a11y/recommended",
+    "plugin:prettier/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier"
   ],
+  "globals": { "React": "writable", "JSX": true },
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "prettier", "react", "react-hooks", "jest"],
+  "parserOptions": {
+    "ecmaFeatures": { "jsx": true },
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "prettier", "jest", "@typescript-eslint"],
+  "root": true,
   "rules": {
+    "import/extensions": ["error", { "ts": "ignorePackages" }],
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
     "jest/valid-expect": "error",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "@typescript-eslint/no-non-null-assertion": "off",
-    "@typescript-eslint/ban-ts-comment": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "no-return-assign": [2, "except-parens"],
+    "no-unused-vars": "warn",
+    "prettier/prettier": [
+      "warn",
+      { "jsxSingleQuote": false, "printWidth": 80, "trailingComma": "es5" }
+    ],
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    "react/jsx-no-undef": "error"
   },
   "settings": {
-    "react": {
-      "version": "detect"
+    "react": { "version": "detect" },
+    "jest": { "version": "detect" },
+    "import/resolver": {
+      "node": {
+        "extensions": [".ts", ".tsx"]
+      }
     }
-  },
-  "env": {
-    "browser": true,
-    "node": true
-  },
-  "globals": {
-    "JSX": true
   }
 }
